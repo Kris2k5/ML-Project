@@ -17,6 +17,8 @@ Key Components:
 import os
 import re
 from typing import List, Dict, Tuple
+from collections import Counter
+import itertools
 import PyPDF2
 import pandas as pd
 import numpy as np
@@ -161,14 +163,11 @@ class ResumeScreener:
         """
         tokens = text.split()
         
-        # Count word frequencies
-        word_freq = {}
-        for word in tokens:
-            word_freq[word] = word_freq.get(word, 0) + 1
+        # Count word frequencies using Counter for better performance
+        word_freq = Counter(tokens)
         
-        # Sort by frequency and return top N
-        sorted_words = sorted(word_freq.items(), key=lambda x: x[1], reverse=True)
-        return [word for word, freq in sorted_words[:top_n]]
+        # Get top N most common words
+        return [word for word, freq in word_freq.most_common(top_n)]
     
     def analyze_resumes(self, job_description: str, resume_files: List[Tuple[str, str]]) -> pd.DataFrame:
         """
@@ -263,7 +262,8 @@ class ResumeScreener:
             
             # Find matching keywords with job description
             matched_keywords = job_keywords.intersection(resume_keywords)
-            matched_keywords_str = ', '.join(sorted(list(matched_keywords))[:10])  # Top 10 matches
+            # Use itertools.islice for efficient slicing of sorted keywords
+            matched_keywords_str = ', '.join(itertools.islice(sorted(matched_keywords), 10))
             
             results.append({
                 'Candidate_Name': resume['filename'],

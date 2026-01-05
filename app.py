@@ -14,6 +14,10 @@ import pandas as pd
 from resume_screener import ResumeScreener
 
 
+# Configuration constants
+MIN_JOB_DESCRIPTION_LENGTH = 50
+
+
 # Page configuration
 st.set_page_config(
     page_title="AI Resume Screener",
@@ -181,8 +185,8 @@ Preferred Qualifications:
             st.error("⚠️ Please upload at least one resume file!")
             return
         
-        if not job_description or len(job_description.strip()) < 50:
-            st.error("⚠️ Please enter a detailed job description (at least 50 characters)!")
+        if not job_description or len(job_description.strip()) < MIN_JOB_DESCRIPTION_LENGTH:
+            st.error(f"⚠️ Please enter a detailed job description (at least {MIN_JOB_DESCRIPTION_LENGTH} characters)!")
             return
         
         # Process files
@@ -329,9 +333,11 @@ Preferred Qualifications:
         
         with col_export2:
             if st.button("🔄 Start New Analysis", use_container_width=True):
-                # Clear session state
-                st.session_state['analysis_complete'] = False
-                st.session_state['results'] = None
+                # Clear session state properly
+                if 'analysis_complete' in st.session_state:
+                    del st.session_state['analysis_complete']
+                if 'results' in st.session_state:
+                    del st.session_state['results']
                 st.rerun()
     
     # Footer
