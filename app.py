@@ -112,10 +112,12 @@ def main():
         3. Click 'Analyze Candidates'
         4. View ranked results
         
-        **ML Approach:**
-        - TF-IDF vectorization
-        - Cosine similarity matching
+        **ML Approach (Manual Implementation):**
+        - TF-IDF vectorization (from scratch)
+        - Cosine similarity matching (from scratch)
         - Automated keyword extraction
+        - **Python 3.13 compatible**
+        - No scikit-learn dependency!
         """)
         
         st.header("📊 Features")
@@ -125,6 +127,7 @@ def main():
         ✅ Candidate ranking  
         ✅ Skills matching  
         ✅ Export results to CSV  
+        ✅ Educational ML from scratch
         """)
     
     # Main content area
@@ -344,8 +347,9 @@ Preferred Qualifications:
     st.markdown("---")
     st.markdown("""
         <div style='text-align: center; color: #888; padding: 2rem;'>
-            <p>Built with ❤️ using Streamlit and scikit-learn</p>
-            <p>ML-Powered Resume Screening System | Version 1.0</p>
+            <p>Built with ❤️ using Streamlit and Manual ML Implementation</p>
+            <p>ML-Powered Resume Screening System | Version 2.0 (Python 3.13 Compatible)</p>
+            <p>TF-IDF and Cosine Similarity implemented from scratch - No scikit-learn!</p>
         </div>
     """, unsafe_allow_html=True)
 

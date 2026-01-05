@@ -6,24 +6,32 @@ This module implements the core machine learning engine for resume screening.
 It uses NLP techniques (TF-IDF and cosine similarity) to match resumes against
 job descriptions and rank candidates.
 
+**PYTHON 3.13 COMPATIBLE VERSION**
+This implementation uses MANUAL TF-IDF and Cosine Similarity algorithms
+built from scratch using pure Python and NumPy, avoiding scikit-learn
+compilation issues with Python 3.13.
+
 Key Components:
     - Text extraction from PDF and TXT files
     - Text preprocessing (cleaning, tokenization, stopword removal)
-    - TF-IDF vectorization for feature extraction
-    - Cosine similarity for matching
+    - **MANUAL TF-IDF vectorization** for feature extraction (from scratch)
+    - **MANUAL Cosine similarity** for matching (from scratch using NumPy)
     - Candidate ranking algorithm
+    
+Educational Value:
+    All ML algorithms are implemented from scratch with detailed comments
+    explaining the mathematics, making this perfect for learning and presentations.
 """
 
 import os
 import re
+import math
 from typing import List, Dict, Tuple
 from collections import Counter
 import itertools
 import PyPDF2
 import pandas as pd
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -34,14 +42,15 @@ class ResumeScreener:
     Main class for resume screening using machine learning.
     
     This class handles the entire pipeline from text extraction to candidate ranking.
+    Uses MANUAL implementation of TF-IDF and cosine similarity (no scikit-learn).
     """
     
     def __init__(self):
         """Initialize the resume screener with necessary NLP resources."""
         self._download_nltk_resources()
         self.stop_words = set(stopwords.words('english'))
-        self.vectorizer = None
-        self.job_vector = None
+        self.vocabulary = []  # List of unique terms in corpus
+        self.idf_dict = {}    # IDF values for each term
         
     def _download_nltk_resources(self):
         """Download required NLTK data if not already present."""
@@ -49,6 +58,11 @@ class ResumeScreener:
             nltk.data.find('tokenizers/punkt')
         except LookupError:
             nltk.download('punkt', quiet=True)
+        
+        try:
+            nltk.data.find('tokenizers/punkt_tab')
+        except LookupError:
+            nltk.download('punkt_tab', quiet=True)
         
         try:
             nltk.data.find('corpora/stopwords')
@@ -169,16 +183,168 @@ class ResumeScreener:
         # Get top N most common words
         return [word for word, freq in word_freq.most_common(top_n)]
     
+    def build_vocabulary(self, documents: List[str]) -> List[str]:
+        """
+        Build vocabulary from all documents.
+        
+        Args:
+            documents (List[str]): List of preprocessed text documents
+            
+        Returns:
+            List[str]: Sorted list of unique terms across all documents
+        """
+        # Extract all unique terms from all documents
+        all_terms = set()
+        for doc in documents:
+            terms = doc.split()
+            all_terms.update(terms)
+        
+        # Return sorted vocabulary for consistency
+        return sorted(list(all_terms))
+    
+    def compute_term_frequency(self, document: str) -> Dict[str, float]:
+        """
+        Compute Term Frequency (TF) for a document.
+        
+        TF measures how frequently a term appears in a document.
+        Formula: TF(term, doc) = (count of term in doc) / (total terms in doc)
+        
+        Args:
+            document (str): Preprocessed text document
+            
+        Returns:
+            Dict[str, float]: Dictionary mapping terms to their TF values
+        """
+        terms = document.split()
+        total_terms = len(terms)
+        
+        if total_terms == 0:
+            return {}
+        
+        # Count term frequencies
+        term_counts = Counter(terms)
+        
+        # Calculate TF for each term
+        tf_dict = {}
+        for term, count in term_counts.items():
+            tf_dict[term] = count / total_terms
+        
+        return tf_dict
+    
+    def compute_inverse_document_frequency(self, documents: List[str]) -> Dict[str, float]:
+        """
+        Compute Inverse Document Frequency (IDF) for all terms in the corpus.
+        
+        IDF measures how important a term is across all documents.
+        Terms appearing in many documents get lower IDF scores.
+        
+        Formula: IDF(term) = log(total documents / documents containing term)
+        
+        Args:
+            documents (List[str]): List of preprocessed text documents
+            
+        Returns:
+            Dict[str, float]: Dictionary mapping terms to their IDF values
+        """
+        total_docs = len(documents)
+        
+        # Count how many documents contain each term
+        term_doc_count = {}
+        for doc in documents:
+            unique_terms = set(doc.split())
+            for term in unique_terms:
+                term_doc_count[term] = term_doc_count.get(term, 0) + 1
+        
+        # Calculate IDF for each term
+        # Adding 1 to denominator prevents division by zero
+        idf_dict = {}
+        for term, doc_count in term_doc_count.items():
+            idf_dict[term] = math.log(total_docs / (1 + doc_count))
+        
+        return idf_dict
+    
+    def compute_tfidf_vector(self, document: str, vocabulary: List[str], 
+                            idf_dict: Dict[str, float]) -> np.ndarray:
+        """
+        Compute TF-IDF vector for a document.
+        
+        TF-IDF combines term frequency with inverse document frequency.
+        Formula: TF-IDF(term, doc) = TF(term, doc) × IDF(term)
+        
+        Args:
+            document (str): Preprocessed text document
+            vocabulary (List[str]): List of all unique terms in corpus
+            idf_dict (Dict[str, float]): IDF values for all terms
+            
+        Returns:
+            np.ndarray: TF-IDF vector (NumPy array) for the document
+        """
+        # Compute term frequency for this document
+        tf_dict = self.compute_term_frequency(document)
+        
+        # Initialize vector with zeros
+        tfidf_vector = np.zeros(len(vocabulary))
+        
+        # Calculate TF-IDF for each term in vocabulary
+        for idx, term in enumerate(vocabulary):
+            if term in tf_dict:
+                # TF-IDF = TF × IDF
+                tf = tf_dict[term]
+                idf = idf_dict.get(term, 0)
+                tfidf_vector[idx] = tf * idf
+        
+        return tfidf_vector
+    
+    def compute_cosine_similarity(self, vec1: np.ndarray, vec2: np.ndarray) -> float:
+        """
+        Compute cosine similarity between two vectors.
+        
+        Cosine similarity measures the cosine of the angle between two vectors.
+        It ranges from 0 (completely dissimilar) to 1 (identical).
+        
+        Formula: cosine_similarity(A, B) = (A · B) / (||A|| × ||B||)
+        where:
+            - A · B is the dot product of vectors A and B
+            - ||A|| is the Euclidean norm (magnitude) of vector A
+        
+        Args:
+            vec1 (np.ndarray): First vector
+            vec2 (np.ndarray): Second vector
+            
+        Returns:
+            float: Cosine similarity score (0 to 1)
+        """
+        # Compute dot product using NumPy
+        dot_product = np.dot(vec1, vec2)
+        
+        # Compute magnitudes (L2 norms) using NumPy
+        norm1 = np.linalg.norm(vec1)
+        norm2 = np.linalg.norm(vec2)
+        
+        # Avoid division by zero
+        if norm1 == 0 or norm2 == 0:
+            return 0.0
+        
+        # Cosine similarity = dot product / (norm1 * norm2)
+        similarity = dot_product / (norm1 * norm2)
+        
+        return similarity
+    
     def analyze_resumes(self, job_description: str, resume_files: List[Tuple[str, str]]) -> pd.DataFrame:
         """
         Analyze resumes against a job description and rank candidates.
         
         This is the main analysis function that:
             1. Preprocesses all texts
-            2. Creates TF-IDF vectors
-            3. Computes cosine similarity scores
+            2. Creates TF-IDF vectors MANUALLY (from scratch)
+            3. Computes cosine similarity scores MANUALLY (using NumPy)
             4. Ranks candidates
             5. Extracts matching keywords
+        
+        **MANUAL ML IMPLEMENTATION**:
+        - No scikit-learn dependency
+        - Pure Python + NumPy implementation
+        - Python 3.13 compatible
         
         Args:
             job_description (str): The job description text
@@ -223,35 +389,39 @@ class ResumeScreener:
             print("No resumes could be processed successfully.")
             return pd.DataFrame()
         
-        # Step 3: Create TF-IDF vectors
-        print("Computing TF-IDF vectors...")
+        # Step 3: Build vocabulary and compute IDF (MANUAL IMPLEMENTATION)
+        print("Building vocabulary and computing IDF values...")
         
         # Prepare documents: job description + all resumes
         documents = [job_desc_processed] + [r['processed_text'] for r in resume_data]
         
-        # Create TF-IDF vectorizer
-        # Using 1-2 word phrases (unigrams and bigrams) for better matching
-        self.vectorizer = TfidfVectorizer(
-            max_features=5000,
-            ngram_range=(1, 2),
-            min_df=1,
-            max_df=0.8
-        )
+        # Build vocabulary from all documents
+        self.vocabulary = self.build_vocabulary(documents)
+        print(f"Vocabulary size: {len(self.vocabulary)} unique terms")
         
-        # Fit and transform
-        tfidf_matrix = self.vectorizer.fit_transform(documents)
+        # Compute IDF for all terms in vocabulary
+        self.idf_dict = self.compute_inverse_document_frequency(documents)
         
-        # Job description vector is the first one
-        self.job_vector = tfidf_matrix[0:1]
+        # Step 4: Create TF-IDF vectors (MANUAL IMPLEMENTATION)
+        print("Computing TF-IDF vectors...")
         
-        # Resume vectors are the rest
-        resume_vectors = tfidf_matrix[1:]
+        # Compute TF-IDF vector for job description
+        job_vector = self.compute_tfidf_vector(job_desc_processed, self.vocabulary, self.idf_dict)
         
-        # Step 4: Compute cosine similarity
+        # Compute TF-IDF vectors for all resumes
+        resume_vectors = []
+        for resume in resume_data:
+            vector = self.compute_tfidf_vector(resume['processed_text'], self.vocabulary, self.idf_dict)
+            resume_vectors.append(vector)
+        
+        # Step 5: Compute cosine similarity (MANUAL IMPLEMENTATION)
         print("Computing similarity scores...")
-        similarities = cosine_similarity(self.job_vector, resume_vectors)[0]
+        similarities = []
+        for resume_vector in resume_vectors:
+            similarity = self.compute_cosine_similarity(job_vector, resume_vector)
+            similarities.append(similarity)
         
-        # Step 5: Create results dataframe
+        # Step 6: Create results dataframe
         results = []
         for idx, resume in enumerate(resume_data):
             # Get similarity score as percentage
@@ -335,3 +505,5 @@ if __name__ == "__main__":
     # print(results)
     
     print("ResumeScreener module loaded successfully!")
+    print("Using MANUAL TF-IDF and Cosine Similarity implementation (Python 3.13 compatible)")
+    print("No scikit-learn dependency - all ML implemented from scratch!")
