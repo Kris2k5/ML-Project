@@ -1,11 +1,19 @@
 # 📄 AI-Powered Resume Screening System
 
-An intelligent machine learning system that automatically analyzes and ranks candidate resumes based on job description requirements. Built with Python, scikit-learn, and Streamlit.
+An intelligent machine learning system that automatically analyzes and ranks candidate resumes based on job description requirements. Built with Python, **manual ML implementation**, and Streamlit.
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3.2-orange.svg)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.28.0-red.svg)
+![Python](https://img.shields.io/badge/Python-3.13-blue.svg)
+![Manual ML](https://img.shields.io/badge/ML-From%20Scratch-orange.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-Latest-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+## 🎓 Educational ML Implementation
+
+**This project implements TF-IDF and Cosine Similarity from scratch** using pure Python and NumPy - no scikit-learn dependency! This makes it:
+- ✅ **Python 3.13 compatible** (no compilation required)
+- ✅ **Perfect for learning** ML concepts with heavily commented code
+- ✅ **Great for presentations** - every line can be explained
+- ✅ **Educational** - understand the math behind ML algorithms
 
 ## 📋 Table of Contents
 
@@ -54,24 +62,44 @@ The AI-Powered Resume Screening System is designed to help HR professionals and 
 
 ## 🧠 ML Approach
 
-The system uses a straightforward but effective machine learning approach:
+The system uses a straightforward but effective machine learning approach **implemented from scratch**:
 
 ### 1. Text Preprocessing
 ```
 Raw Text → Lowercase → Remove Special Characters → Tokenization → Remove Stopwords → Clean Text
 ```
 
-### 2. Feature Extraction (TF-IDF)
+### 2. Feature Extraction (TF-IDF) - **MANUAL IMPLEMENTATION**
 **TF-IDF (Term Frequency-Inverse Document Frequency)** converts text documents into numerical vectors:
-- **Term Frequency (TF)**: How often a word appears in a document
-- **Inverse Document Frequency (IDF)**: How unique/important a word is across all documents
-- **Formula**: `TF-IDF(word, doc) = TF(word, doc) × IDF(word)`
 
-### 3. Similarity Scoring (Cosine Similarity)
-**Cosine Similarity** measures the similarity between two vectors:
+#### Term Frequency (TF)
+Measures how often a word appears in a document.
+```python
+TF(word, doc) = (count of word in doc) / (total words in doc)
+```
+
+#### Inverse Document Frequency (IDF)
+Measures how unique/important a word is across all documents.
+```python
+IDF(word) = log(total documents / documents containing word)
+```
+
+#### TF-IDF Score
+Combines both metrics to identify important terms.
+```python
+TF-IDF(word, doc) = TF(word, doc) × IDF(word)
+```
+
+### 3. Similarity Scoring (Cosine Similarity) - **MANUAL IMPLEMENTATION**
+**Cosine Similarity** measures the similarity between two vectors using NumPy:
 - Computes the cosine of the angle between job description and resume vectors
 - **Range**: 0 (completely dissimilar) to 1 (identical)
-- **Formula**: `cosine_similarity(A, B) = (A · B) / (||A|| × ||B||)`
+```python
+cosine_similarity(A, B) = (A · B) / (||A|| × ||B||)
+```
+where:
+- `A · B` is the dot product of vectors A and B
+- `||A||` is the magnitude (Euclidean norm) of vector A
 
 ### 4. Ranking Algorithm
 1. Compute similarity score for each resume
@@ -79,6 +107,12 @@ Raw Text → Lowercase → Remove Special Characters → Tokenization → Remove
 3. Sort candidates in descending order
 4. Extract matching keywords
 5. Return ranked results
+
+### Why Manual Implementation?
+- ✅ **Python 3.13 Compatible**: No compilation issues
+- ✅ **Educational**: Understand exactly how ML works
+- ✅ **Transparent**: Every calculation is visible
+- ✅ **Presentation-Ready**: Perfect for explaining in soutenance
 
 ## 📁 Project Structure
 
@@ -105,7 +139,7 @@ ML-Project/
 ## 🚀 Installation
 
 ### Prerequisites
-- Python 3.8 or higher
+- Python 3.8 or higher (Python 3.13 fully supported!)
 - pip (Python package manager)
 
 ### Step-by-Step Installation
@@ -132,11 +166,14 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+**Note**: This project does **NOT** require scikit-learn, so it installs cleanly on Python 3.13 without any compilation issues!
+
 4. **Download NLTK data (automatic on first run)**
 The application will automatically download required NLTK data on first run. If you want to download manually:
 ```python
 import nltk
 nltk.download('punkt')
+nltk.download('punkt_tab')
 nltk.download('stopwords')
 ```
 
@@ -259,7 +296,7 @@ The `sample_data/` directory contains realistic test files:
                       ▼
 ┌─────────────────────────────────────────────────────────────┐
 │           4. FEATURE EXTRACTION (TF-IDF)                    │
-│  - Vectorization using scikit-learn                         │
+│  - MANUAL implementation (no scikit-learn)                  │
 │  - Create numerical representations                         │
 │  - Job description vector + Resume vectors                  │
 └─────────────────────┬───────────────────────────────────────┘
@@ -267,7 +304,7 @@ The `sample_data/` directory contains realistic test files:
                       ▼
 ┌─────────────────────────────────────────────────────────────┐
 │          5. SIMILARITY COMPUTATION                          │
-│  - Cosine similarity between job desc and each resume       │
+│  - MANUAL cosine similarity (using NumPy)                   │
 │  - Score range: 0.0 to 1.0                                  │
 └─────────────────────┬───────────────────────────────────────┘
                       │
@@ -294,18 +331,27 @@ The `sample_data/` directory contains realistic test files:
 ### Technologies Used
 
 **Core Libraries:**
-- **Streamlit (1.28.0)**: Web application framework
-- **scikit-learn (1.3.2)**: ML algorithms (TF-IDF, cosine similarity)
-- **pandas (2.1.3)**: Data manipulation and analysis
-- **NumPy (1.26.2)**: Numerical computations
-- **PyPDF2 (3.0.1)**: PDF text extraction
-- **NLTK (3.8.1)**: Natural language processing
+- **Streamlit**: Web application framework
+- **pandas**: Data manipulation and analysis
+- **NumPy**: Numerical computations (for manual ML implementation)
+- **PyPDF2**: PDF text extraction
+- **NLTK**: Natural language processing
+
+**Manual ML Implementation:**
+- **TF-IDF**: Implemented from scratch using Python + NumPy
+- **Cosine Similarity**: Implemented from scratch using NumPy
+- **No scikit-learn**: Python 3.13 compatible, no compilation required
 
 ### Key Components
 
 **1. ResumeScreener Class (`resume_screener.py`)**
 - `extract_text()`: Extracts text from PDF/TXT files
 - `preprocess_text()`: Cleans and normalizes text
+- `build_vocabulary()`: Creates vocabulary from all documents
+- `compute_term_frequency()`: Calculates TF for each document (manual)
+- `compute_inverse_document_frequency()`: Calculates IDF for corpus (manual)
+- `compute_tfidf_vector()`: Creates TF-IDF vectors (manual)
+- `compute_cosine_similarity()`: Calculates similarity score (manual)
 - `extract_keywords()`: Identifies important terms
 - `analyze_resumes()`: Main analysis pipeline
 - `export_results()`: CSV export functionality
@@ -353,17 +399,27 @@ The `sample_data/` directory contains realistic test files:
 
 This project demonstrates:
 1. **NLP Fundamentals**: Text preprocessing, tokenization, stopword removal
-2. **Feature Engineering**: TF-IDF vectorization
-3. **ML Algorithms**: Cosine similarity for text matching
-4. **Python Best Practices**: Clean code, documentation, modularity
-5. **Full-Stack Development**: Backend ML + Frontend UI
-6. **Data Science Workflow**: From raw data to actionable insights
+2. **Feature Engineering**: Manual TF-IDF vectorization from scratch
+3. **ML Algorithms**: Manual cosine similarity implementation using NumPy
+4. **Mathematical Understanding**: Every ML formula is implemented and commented
+5. **Python Best Practices**: Clean code, documentation, modularity
+6. **Full-Stack Development**: Backend ML + Frontend UI
+7. **Data Science Workflow**: From raw data to actionable insights
 
 Perfect for:
 - Academic presentations (soutenance)
 - Portfolio projects
-- Learning ML fundamentals
+- Learning ML fundamentals **by implementing them**
 - Understanding NLP applications
+- **Python 3.13 environments**
+- Teaching ML concepts with transparent code
+
+### Why Implement ML from Scratch?
+- **Educational**: Understand exactly how TF-IDF and cosine similarity work
+- **Practical**: Python 3.13 compatibility (scikit-learn has compilation issues)
+- **Transparent**: See every calculation step-by-step
+- **Presentation-Ready**: Explain the math behind your code in soutenance
+- **Future-Proof**: No dependency on libraries that may break with new Python versions
 
 ## 🤝 Contributing
 
@@ -394,11 +450,12 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🙏 Acknowledgments
 
-- scikit-learn for ML algorithms
 - Streamlit for the amazing web framework
 - NLTK for NLP tools
 - PyPDF2 for PDF processing
+- NumPy for numerical computations
 - The open-source community
+- **Manual ML implementation** inspired by educational ML resources
 
 ## 📧 Contact
 
@@ -423,4 +480,4 @@ For questions or feedback, please open an issue on GitHub.
 
 ---
 
-*Built with ❤️ using Python, scikit-learn, and Streamlit*
+*Built with ❤️ using Python, NumPy, and Streamlit - ML implemented from scratch!*
