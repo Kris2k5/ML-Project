@@ -1,21 +1,27 @@
 ===============================================================================
 PRODUCT SPECIFICATION DOCUMENT
 Resume Screening System with Machine Learning
+PYTHON 3.13 COMPATIBLE VERSION - MANUAL ML IMPLEMENTATION
 ===============================================================================
 
 1. PROJECT OVERVIEW
 ===============================================================================
 
 Project Name: AI-Powered Resume Screening System
-Version: 1.0
+Version: 2.0 (Python 3.13 Compatible)
 Date: January 2026
+
+**CRITICAL IMPLEMENTATION NOTE:**
+This version implements TF-IDF and Cosine Similarity FROM SCRATCH using pure
+Python and NumPy. NO scikit-learn dependency to ensure Python 3.13 compatibility
+and provide educational transparency.
 
 1.1 OBJECTIVES AND GOALS
 -------------------------
 Primary Objective:
     Develop an intelligent resume screening system that automatically analyzes
     and ranks candidate resumes based on job description requirements using
-    machine learning techniques.
+    machine learning techniques IMPLEMENTED FROM SCRATCH.
 
 Key Goals:
     - Reduce manual resume screening time by 80%
@@ -24,6 +30,8 @@ Key Goals:
     - Support multiple resume formats (PDF, TXT)
     - Deliver an intuitive user interface for HR professionals
     - Demonstrate practical ML application for educational purposes
+    - **Python 3.13 compatible** (no compilation issues)
+    - **Manual ML implementation** for educational value and transparency
 
 
 2. SYSTEM ARCHITECTURE OVERVIEW
@@ -62,12 +70,14 @@ b) NLP Preprocessing Module
     - Lowercase conversion
 
 c) Feature Extraction Module
-    - TF-IDF (Term Frequency-Inverse Document Frequency) vectorization
+    - **MANUAL TF-IDF implementation** (from scratch using NumPy)
     - Vocabulary building
+    - Term Frequency calculation
+    - Inverse Document Frequency calculation
     - Vector representation generation
 
 d) Matching & Scoring Module
-    - Cosine similarity computation
+    - **MANUAL Cosine similarity computation** (using NumPy)
     - Score normalization (0-100%)
     - Skills extraction
     - Qualification matching
@@ -163,6 +173,13 @@ Functionality:
 4. ML APPROACH EXPLANATION
 ===============================================================================
 
+**MANUAL IMPLEMENTATION - NO SCIKIT-LEARN**
+
+This implementation builds TF-IDF and Cosine Similarity from scratch for:
+1. Python 3.13 compatibility (no compilation issues)
+2. Educational transparency (understand every calculation)
+3. Presentation readiness (explain the math step-by-step)
+
 4.1 NATURAL LANGUAGE PROCESSING (NLP)
 --------------------------------------
 Purpose: Transform unstructured text into analyzable data
@@ -183,54 +200,96 @@ Techniques Used:
         - Keep domain-specific terms
         - Use NLTK stopword corpus
 
-4.2 TF-IDF VECTORIZATION
-------------------------
+4.2 TF-IDF VECTORIZATION - **MANUAL IMPLEMENTATION**
+-----------------------------------------------------
 Purpose: Convert text documents into numerical feature vectors
 
 Theory:
     TF-IDF (Term Frequency-Inverse Document Frequency) measures the
     importance of words in a document relative to a corpus.
 
-    Formula:
-        TF-IDF(word, doc) = TF(word, doc) × IDF(word)
+Mathematical Formulas (IMPLEMENTED FROM SCRATCH):
+    
+    1. Term Frequency (TF):
+        TF(term, doc) = (count of term in doc) / (total terms in doc)
         
-        where:
-        TF(word, doc) = (Count of word in doc) / (Total words in doc)
-        IDF(word) = log(Total documents / Documents containing word)
+        Implementation: compute_term_frequency() method
+        - Count word occurrences in document
+        - Divide by total word count
+        - Returns dictionary of term -> TF value
+    
+    2. Inverse Document Frequency (IDF):
+        IDF(term) = log(total documents / (1 + documents containing term))
+        
+        Implementation: compute_inverse_document_frequency() method
+        - Count documents containing each term
+        - Apply logarithm to reduce weight of common terms
+        - Add 1 to denominator to prevent division by zero
+    
+    3. TF-IDF Score:
+        TF-IDF(term, doc) = TF(term, doc) × IDF(term)
+        
+        Implementation: compute_tfidf_vector() method
+        - Multiply TF and IDF for each term
+        - Create NumPy vector with TF-IDF scores
+        - Returns dense vector representation
 
-Implementation:
-    - Use scikit-learn's TfidfVectorizer
-    - Unigram and bigram support (1-2 word phrases)
-    - Maximum features: 5000
-    - Min/max document frequency filtering
+Implementation Details:
+    - Uses Python dictionaries for efficient lookups
+    - NumPy arrays for vector operations
+    - No dependency on scikit-learn TfidfVectorizer
+    - Vocabulary size: all unique terms across documents
+    - Heavily commented code explaining each step
 
 Benefits:
     - Highlights important, distinctive terms
     - Reduces weight of common words
     - Creates comparable vector representations
+    - **Educational**: Every calculation is visible
+    - **Python 3.13 compatible**: No compilation required
 
-4.3 COSINE SIMILARITY
----------------------
+4.3 COSINE SIMILARITY - **MANUAL IMPLEMENTATION**
+--------------------------------------------------
 Purpose: Measure similarity between job description and resume vectors
 
 Theory:
     Cosine similarity measures the cosine of the angle between two
     vectors in multi-dimensional space.
 
-    Formula:
-        cosine_similarity(A, B) = (A · B) / (||A|| × ||B||)
-        
-        Range: 0 (completely dissimilar) to 1 (identical)
+Mathematical Formula (IMPLEMENTED FROM SCRATCH):
+    
+    cosine_similarity(A, B) = (A · B) / (||A|| × ||B||)
+    
+    where:
+        - A · B is the dot product of vectors A and B
+        - ||A|| is the Euclidean norm (magnitude) of vector A
+        - ||B|| is the Euclidean norm (magnitude) of vector B
+    
+    Range: 0 (completely dissimilar) to 1 (identical)
 
-Implementation:
-    - Use scikit-learn's cosine_similarity function
-    - Compute pairwise similarities
-    - Convert to percentage (multiply by 100)
+Implementation Details:
+    
+    Implementation: compute_cosine_similarity() method
+    
+    1. Compute dot product using NumPy:
+        dot_product = np.dot(vec1, vec2)
+    
+    2. Compute magnitudes (L2 norms) using NumPy:
+        norm1 = np.linalg.norm(vec1)
+        norm2 = np.linalg.norm(vec2)
+    
+    3. Calculate cosine similarity:
+        similarity = dot_product / (norm1 * norm2)
+    
+    4. Handle edge case:
+        - Return 0.0 if either norm is zero
 
 Benefits:
     - Magnitude-independent (focuses on direction)
     - Effective for text comparison
-    - Computationally efficient
+    - Computationally efficient with NumPy
+    - **Educational**: Simple, clear implementation
+    - **No scikit-learn**: Pure NumPy operations
 
 4.4 RANKING ALGORITHM
 ---------------------
@@ -238,8 +297,14 @@ Process:
     1. Compute similarity score for each resume
     2. Sort candidates in descending order
     3. Assign rank positions (1, 2, 3, ...)
-    4. Calculate match percentage
+    4. Calculate match percentage (multiply by 100)
     5. Extract top matching keywords per candidate
+
+Code Quality:
+    - All ML methods heavily commented
+    - Mathematical formulas explained in docstrings
+    - Step-by-step calculation visible in code
+    - Perfect for presentations and learning
 
 
 5. USER WORKFLOW AND USE CASES
@@ -306,14 +371,20 @@ Use Case 3: Comparative Analysis
 -------------------------
 Programming Language:
     - Python 3.8 or higher
+    - **Python 3.13 fully supported** (no compilation issues)
 
 Core Libraries:
     - streamlit: Web UI framework
-    - scikit-learn: ML algorithms (TF-IDF, cosine similarity)
     - pandas: Data manipulation and export
-    - numpy: Numerical computations
+    - numpy: Numerical computations (for manual ML)
     - PyPDF2: PDF text extraction
     - nltk: Natural language processing
+
+**NO SCIKIT-LEARN DEPENDENCY**:
+    - TF-IDF implemented manually
+    - Cosine similarity implemented manually
+    - Pure Python + NumPy implementation
+    - Educational and Python 3.13 compatible
 
 6.2 SYSTEM REQUIREMENTS
 -----------------------
@@ -357,11 +428,14 @@ Scalability:
 
 6.5 CODE QUALITY REQUIREMENTS
 -----------------------------
-- Well-commented code (20%+ comment ratio)
+- Well-commented code (30%+ comment ratio for ML methods)
 - Modular design with clear function separation
 - Error handling for all file operations
 - Input validation for all user inputs
 - Logging for debugging purposes
+- **Mathematical explanations** in docstrings
+- **Step-by-step ML calculations** visible in code
+- **Perfect for presentations** - every line explainable
 
 
 7. OUTPUT SPECIFICATIONS
@@ -453,12 +527,16 @@ Technical Success:
     ✓ ML approach is explainable and transparent
     ✓ Performance meets requirements
     ✓ UI is intuitive and responsive
+    ✓ **Python 3.13 compatible** (no compilation issues)
+    ✓ **Manual ML implementation** works correctly
 
 Educational Success:
     ✓ Demonstrates understanding of NLP concepts
     ✓ Shows practical ML application
     ✓ Code is presentation-ready
     ✓ System can be explained in 5 minutes
+    ✓ **Every ML calculation is visible and documented**
+    ✓ **Perfect for soutenance presentation**
 
 
 10. FUTURE ENHANCEMENTS (OUT OF SCOPE)
