@@ -1,0 +1,154 @@
+JOB DESCRIPTION: Senior Machine Learning Engineer
+
+Company: InnovateTech Solutions
+Location: San Francisco, CA (Hybrid)
+Employment Type: Full-time
+Experience Level: Senior (5+ years)
+
+ABOUT THE ROLE
+
+We are seeking a highly skilled Senior Machine Learning Engineer to join our AI team. 
+In this role, you will design, develop, and deploy machine learning models and systems 
+that power our core products. You'll work on challenging problems in natural language 
+processing, computer vision, and recommendation systems.
+
+REQUIRED QUALIFICATIONS
+
+Education:
+• Bachelor's degree in Computer Science, Data Science, Mathematics, or related field
+• Master's degree preferred
+
+Experience:
+• 5+ years of professional experience in software engineering or data science
+• 3+ years of hands-on experience with machine learning and deep learning
+• Proven track record of deploying ML models to production
+
+Technical Skills:
+
+Programming:
+• Expert-level Python programming skills (REQUIRED)
+• Strong understanding of data structures and algorithms
+• Experience with Java, C++, or other languages is a plus
+
+Machine Learning & AI:
+• Deep expertise in scikit-learn, TensorFlow, PyTorch, or Keras
+• Strong understanding of ML algorithms: supervised and unsupervised learning
+• Experience with deep learning architectures (CNNs, RNNs, LSTMs, Transformers)
+• Knowledge of natural language processing (NLP) techniques
+• Familiarity with computer vision and image processing
+
+Data Processing:
+• Proficiency with pandas, NumPy, and data manipulation libraries
+• Experience with big data technologies (Spark, Hadoop) preferred
+• SQL and database management skills
+
+MLOps & Deployment:
+• Experience deploying ML models to production environments
+• Familiarity with Docker, Kubernetes for containerization
+• Knowledge of CI/CD pipelines for ML systems
+• Experience with cloud platforms (AWS, GCP, or Azure)
+
+Software Engineering:
+• Strong software development practices (version control, testing, code review)
+• Experience with RESTful APIs and web services
+• Knowledge of microservices architecture
+• Familiarity with agile development methodologies
+
+PREFERRED QUALIFICATIONS
+
+• PhD in Machine Learning, Computer Science, or related field
+• Publications in top-tier ML conferences (NeurIPS, ICML, CVPR, etc.)
+• Experience with reinforcement learning
+• Contributions to open-source ML projects
+• Experience with ML frameworks like MLflow, Kubeflow, or SageMaker
+• Knowledge of model explainability and interpretability techniques
+• Experience with A/B testing and experimental design
+
+KEY RESPONSIBILITIES
+
+Model Development:
+• Design and implement machine learning models for various business applications
+• Conduct experiments and evaluate model performance
+• Optimize models for accuracy, speed, and scalability
+• Stay current with latest ML research and apply new techniques
+
+Production Deployment:
+• Deploy ML models to production environments
+• Build and maintain ML pipelines and infrastructure
+• Monitor model performance and implement improvements
+• Ensure models are scalable and reliable
+
+Collaboration:
+• Work closely with product managers to understand business requirements
+• Collaborate with software engineers to integrate ML solutions
+• Mentor junior engineers and data scientists
+• Present findings and recommendations to stakeholders
+
+Research & Innovation:
+• Explore new ML techniques and technologies
+• Prototype innovative solutions to complex problems
+• Contribute to the ML community through publications or open-source
+
+WHAT WE OFFER
+
+Compensation:
+• Competitive salary range: $150,000 - $200,000 based on experience
+• Equity/stock options
+• Performance bonuses
+
+Benefits:
+• Comprehensive health, dental, and vision insurance
+• 401(k) with company match
+• Flexible PTO policy
+• Remote work options (hybrid model)
+
+Professional Development:
+• Conference attendance and training budget
+• Access to latest ML tools and technologies
+• Mentorship programs
+• Career growth opportunities
+
+Work Environment:
+• Collaborative and innovative team culture
+• State-of-the-art ML infrastructure
+• Access to large-scale datasets
+• Modern office facilities in San Francisco
+
+IDEAL CANDIDATE PROFILE
+
+We're looking for someone who:
+✓ Has strong Python and machine learning expertise
+✓ Can translate business problems into ML solutions
+✓ Enjoys working in a fast-paced, collaborative environment
+✓ Is passionate about AI and stays updated with latest research
+✓ Has excellent problem-solving and analytical skills
+✓ Can communicate complex technical concepts clearly
+✓ Takes ownership and drives projects to completion
+✓ Values code quality and best practices
+
+COMPANY CULTURE
+
+At InnovateTech Solutions, we foster a culture of innovation, collaboration, and continuous 
+learning. We believe in:
+• Work-life balance
+• Diversity and inclusion
+• Transparent communication
+• Employee growth and development
+• Making a positive impact through technology
+
+TO APPLY
+
+Please submit your resume highlighting your ML experience and projects. Include links to:
+• GitHub profile or portfolio
+• Publications or blog posts (if applicable)
+• Notable projects or contributions
+
+We are an equal opportunity employer and value diversity in our company. We do not 
+discriminate on the basis of race, religion, color, national origin, gender, sexual 
+orientation, age, marital status, veteran status, or disability status.
+
+Application Deadline: Open until filled
+Start Date: Flexible, as soon as possible
+
+Keywords: Machine Learning, Deep Learning, Python, TensorFlow, PyTorch, scikit-learn, 
+NLP, Computer Vision, AI, Data Science, MLOps, AWS, Cloud Computing

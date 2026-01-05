@@ -1,0 +1,116 @@
+DAVID THOMPSON
+Junior Software Engineer
+Email: david.thompson@email.com | Phone: (555) 567-8901
+
+OBJECTIVE
+Recent Computer Science graduate seeking a Junior Software Engineer position to apply my 
+programming skills and contribute to innovative projects. Eager to learn and grow in a 
+collaborative development environment.
+
+EDUCATION
+
+Bachelor of Science in Computer Science
+Georgia Institute of Technology | August 2019 - May 2023
+GPA: 3.5/4.0
+Dean's List: Fall 2021, Spring 2022
+
+Relevant Coursework:
+• Data Structures and Algorithms
+• Object-Oriented Programming
+• Database Management Systems
+• Software Engineering
+• Web Development
+• Computer Networks
+• Operating Systems
+
+TECHNICAL SKILLS
+
+Programming Languages: Python, Java, C++, JavaScript, HTML/CSS
+Frameworks & Libraries: React, Node.js, Express, Bootstrap
+Databases: MySQL, SQLite, MongoDB (basic)
+Tools & Platforms: Git, GitHub, VS Code, IntelliJ IDEA, Linux
+Other: REST APIs, JSON, Agile methodologies
+
+INTERNSHIP EXPERIENCE
+
+Software Engineering Intern | TechStart Inc. | Atlanta, GA
+June 2022 - August 2022
+• Developed features for internal tools using Python and JavaScript
+• Fixed bugs and improved code quality based on code review feedback
+• Wrote unit tests using pytest to ensure code reliability
+• Participated in daily standup meetings and sprint planning
+• Collaborated with team members using Git for version control
+• Documented code and created user guides
+
+IT Intern | Local Business Solutions | Atlanta, GA
+May 2021 - August 2021
+• Provided technical support to employees and resolved IT issues
+• Assisted in maintaining company website using HTML/CSS
+• Created Python scripts to automate routine tasks
+• Helped set up new workstations and install software
+• Learned about network configuration and troubleshooting
+
+ACADEMIC PROJECTS
+
+E-commerce Website (Senior Project)
+• Built a full-stack web application using React and Node.js
+• Implemented user authentication and shopping cart functionality
+• Used MongoDB for data storage
+• Deployed on Heroku for demonstration
+• Team project with 4 members
+
+Student Grade Management System
+• Created Java application for managing student records
+• Implemented CRUD operations with MySQL database
+• Designed user interface using Java Swing
+• Applied object-oriented programming principles
+
+Algorithm Visualizer
+• Developed web application to visualize sorting algorithms
+• Used JavaScript and HTML5 Canvas for animations
+• Helped students understand algorithm behavior
+• Published on GitHub with documentation
+
+HACKATHONS & COMPETITIONS
+
+• Participated in HackGT 2022 - Built a task management app in 24 hours
+• Competed in Google Code Jam 2022 - Solved algorithmic challenges
+• Member of Georgia Tech Coding Club
+
+CERTIFICATIONS & ONLINE COURSES
+
+• Introduction to Python Programming (Coursera) - 2021
+• Web Development Bootcamp (Udemy) - 2022
+• Git & GitHub for Beginners (freeCodeCamp) - 2020
+
+SKILLS & INTERESTS
+
+Technical Skills:
+• Problem-solving and algorithmic thinking
+• Quick learner and adaptable
+• Attention to detail in code quality
+• Team collaboration
+
+Soft Skills:
+• Good communication skills
+• Time management
+• Eager to learn new technologies
+• Positive attitude
+
+Interests:
+• Open source contribution
+• Technology blogs and podcasts
+• Coding challenges on LeetCode and HackerRank
+• Building personal projects
+
+VOLUNTEER EXPERIENCE
+
+• Code Tutor - Helped high school students learn programming basics (2021-2022)
+• Tech Mentor - Georgia Tech Mentorship Program (2022-2023)
+
+LANGUAGES
+• English (Native)
+• Spanish (Conversational)
+
+REFERENCES
+Available upon request

@@ -1,0 +1,81 @@
+JOHN ANDERSON
+Senior Software Engineer
+Email: john.anderson@email.com | Phone: (555) 123-4567
+LinkedIn: linkedin.com/in/johnanderson
+
+PROFESSIONAL SUMMARY
+Results-driven Senior Software Engineer with 7+ years of experience in full-stack development, 
+specializing in Python, machine learning, and cloud technologies. Proven track record of 
+delivering scalable solutions and leading technical teams. Strong expertise in data science, 
+AI/ML implementations, and modern web frameworks.
+
+TECHNICAL SKILLS
+Programming Languages: Python, Java, JavaScript, SQL, C++
+ML/AI: TensorFlow, PyTorch, scikit-learn, Keras, pandas, NumPy
+Web Frameworks: Django, Flask, FastAPI, React, Node.js
+Cloud Platforms: AWS (EC2, S3, Lambda), Google Cloud Platform, Azure
+Databases: PostgreSQL, MongoDB, Redis, MySQL
+DevOps: Docker, Kubernetes, Jenkins, Git, CI/CD
+Other: REST APIs, Microservices, Agile, TDD
+
+PROFESSIONAL EXPERIENCE
+
+Senior Software Engineer | TechCorp Inc. | San Francisco, CA
+June 2020 - Present
+• Led development of ML-powered recommendation engine using Python and TensorFlow, 
+  increasing user engagement by 35%
+• Designed and implemented RESTful APIs serving 10M+ requests daily using Django and Flask
+• Built scalable data pipeline using Apache Spark and AWS for processing 500GB+ daily data
+• Mentored team of 5 junior engineers and conducted code reviews
+• Implemented CI/CD pipeline reducing deployment time by 60%
+
+Software Engineer | DataSolutions LLC | Seattle, WA
+January 2018 - May 2020
+• Developed machine learning models for predictive analytics using scikit-learn and pandas
+• Created data visualization dashboards using Python, matplotlib, and Plotly
+• Optimized database queries improving application performance by 40%
+• Collaborated with cross-functional teams using Agile methodologies
+• Implemented automated testing framework with 95% code coverage
+
+Junior Software Developer | StartupXYZ | Austin, TX
+July 2016 - December 2017
+• Built web applications using Python Flask and JavaScript
+• Developed REST APIs for mobile applications
+• Participated in daily standups and sprint planning
+• Fixed bugs and implemented new features based on user feedback
+
+EDUCATION
+
+Master of Science in Computer Science
+Stanford University | 2014 - 2016
+Specialization: Artificial Intelligence and Machine Learning
+GPA: 3.8/4.0
+
+Bachelor of Science in Computer Engineering
+University of California, Berkeley | 2010 - 2014
+GPA: 3.6/4.0
+
+PROJECTS
+
+AI-Powered Resume Screener
+• Built ML system for automated resume screening using TF-IDF and cosine similarity
+• Implemented using Python, scikit-learn, and Streamlit
+• Reduced hiring team workload by 70%
+
+Real-time Fraud Detection System
+• Developed anomaly detection system using deep learning (LSTM networks)
+• Achieved 92% accuracy in fraud detection
+• Deployed on AWS Lambda for real-time processing
+
+CERTIFICATIONS
+• AWS Certified Solutions Architect - Associate (2021)
+• TensorFlow Developer Certificate (2020)
+• Python for Data Science (Coursera, 2019)
+
+AWARDS
+• TechCorp Innovation Award 2022
+• Best Project Award - Stanford AI Hackathon 2015
+
+PUBLICATIONS
+• "Scalable Machine Learning for Resume Screening" - Journal of AI Applications, 2023
+• "Deep Learning Approaches for Fraud Detection" - IEEE Conference Proceedings, 2021
