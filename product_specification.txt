@@ -1,0 +1,481 @@
+===============================================================================
+PRODUCT SPECIFICATION DOCUMENT
+Resume Screening System with Machine Learning
+===============================================================================
+
+1. PROJECT OVERVIEW
+===============================================================================
+
+Project Name: AI-Powered Resume Screening System
+Version: 1.0
+Date: January 2026
+
+1.1 OBJECTIVES AND GOALS
+-------------------------
+Primary Objective:
+    Develop an intelligent resume screening system that automatically analyzes
+    and ranks candidate resumes based on job description requirements using
+    machine learning techniques.
+
+Key Goals:
+    - Reduce manual resume screening time by 80%
+    - Provide objective, data-driven candidate rankings
+    - Extract and match key qualifications automatically
+    - Support multiple resume formats (PDF, TXT)
+    - Deliver an intuitive user interface for HR professionals
+    - Demonstrate practical ML application for educational purposes
+
+
+2. SYSTEM ARCHITECTURE OVERVIEW
+===============================================================================
+
+2.1 HIGH-LEVEL ARCHITECTURE
+---------------------------
+The system follows a three-tier architecture:
+
+    [Presentation Layer]
+        ├── Streamlit Web Interface (app.py)
+        └── User Interactions & Visualizations
+    
+    [Business Logic Layer]
+        ├── Resume Screener Engine (resume_screener.py)
+        ├── Text Processing Pipeline
+        ├── ML Matching Algorithm
+        └── Ranking System
+    
+    [Data Layer]
+        ├── Resume Files (PDF/TXT)
+        ├── Job Descriptions
+        └── Extracted Features
+
+2.2 COMPONENT BREAKDOWN
+-----------------------
+a) Text Extraction Module
+    - PDF parser using PyPDF2
+    - Text file reader
+    - Encoding handling
+
+b) NLP Preprocessing Module
+    - Text cleaning and normalization
+    - Tokenization
+    - Stopword removal (NLTK)
+    - Lowercase conversion
+
+c) Feature Extraction Module
+    - TF-IDF (Term Frequency-Inverse Document Frequency) vectorization
+    - Vocabulary building
+    - Vector representation generation
+
+d) Matching & Scoring Module
+    - Cosine similarity computation
+    - Score normalization (0-100%)
+    - Skills extraction
+    - Qualification matching
+
+e) User Interface Module
+    - File upload handlers
+    - Job description input
+    - Results visualization
+    - Export functionality
+
+
+3. FEATURE SPECIFICATIONS
+===============================================================================
+
+3.1 RESUME UPLOAD FEATURE
+--------------------------
+Functionality:
+    - Multi-file upload capability
+    - Support for PDF and TXT formats
+    - File validation and error handling
+    - Maximum file size: 10MB per file
+    - Support for up to 50 resumes per analysis
+
+User Interaction:
+    - Drag-and-drop or browse file selection
+    - Visual confirmation of uploaded files
+    - File name display with format indicators
+
+3.2 JOB DESCRIPTION INPUT FEATURE
+---------------------------------
+Functionality:
+    - Text area for job description entry
+    - Support for rich text input
+    - Character count indicator
+    - Save/load job description templates
+
+User Interaction:
+    - Multi-line text box
+    - Placeholder text with example format
+    - Clear button to reset input
+
+3.3 ML MATCHING ENGINE
+----------------------
+Functionality:
+    - Real-time analysis trigger
+    - Progress indicator during processing
+    - Batch processing optimization
+    - Error recovery mechanisms
+
+ML Processing Steps:
+    1. Extract text from all uploaded resumes
+    2. Preprocess job description and resume texts
+    3. Generate TF-IDF vectors for all documents
+    4. Compute cosine similarity scores
+    5. Extract matching skills/keywords
+    6. Rank candidates by score
+
+3.4 CANDIDATE RANKING FEATURE
+-----------------------------
+Functionality:
+    - Automatic ranking by match score
+    - Percentage-based scoring (0-100%)
+    - Tie-breaking logic
+    - Top-N candidate filtering
+
+Display Components:
+    - Ranked list with scores
+    - Visual score indicators (progress bars)
+    - Color-coded ranking (green/yellow/red)
+    - Candidate details panel
+
+3.5 RESULTS DASHBOARD
+---------------------
+Display Elements:
+    - Summary statistics (total candidates, top score, average score)
+    - Ranked candidate list with:
+        * Candidate name/filename
+        * Match percentage
+        * Matched keywords count
+        * Key qualifications
+    - Detailed view option for each candidate
+    - Visual charts (optional: bar chart of top 10)
+
+3.6 EXPORT/DOWNLOAD FEATURE
+---------------------------
+Functionality:
+    - Export results to CSV format
+    - Include all candidate data and scores
+    - Timestamp in filename
+    - One-click download
+
+
+4. ML APPROACH EXPLANATION
+===============================================================================
+
+4.1 NATURAL LANGUAGE PROCESSING (NLP)
+--------------------------------------
+Purpose: Transform unstructured text into analyzable data
+
+Techniques Used:
+    a) Text Cleaning
+        - Remove special characters, punctuation
+        - Handle Unicode and encoding issues
+        - Strip extra whitespace
+    
+    b) Tokenization
+        - Split text into individual words
+        - Handle hyphenated terms
+        - Preserve meaningful phrases
+    
+    c) Stopword Removal
+        - Remove common words (the, is, at, etc.)
+        - Keep domain-specific terms
+        - Use NLTK stopword corpus
+
+4.2 TF-IDF VECTORIZATION
+------------------------
+Purpose: Convert text documents into numerical feature vectors
+
+Theory:
+    TF-IDF (Term Frequency-Inverse Document Frequency) measures the
+    importance of words in a document relative to a corpus.
+
+    Formula:
+        TF-IDF(word, doc) = TF(word, doc) × IDF(word)
+        
+        where:
+        TF(word, doc) = (Count of word in doc) / (Total words in doc)
+        IDF(word) = log(Total documents / Documents containing word)
+
+Implementation:
+    - Use scikit-learn's TfidfVectorizer
+    - Unigram and bigram support (1-2 word phrases)
+    - Maximum features: 5000
+    - Min/max document frequency filtering
+
+Benefits:
+    - Highlights important, distinctive terms
+    - Reduces weight of common words
+    - Creates comparable vector representations
+
+4.3 COSINE SIMILARITY
+---------------------
+Purpose: Measure similarity between job description and resume vectors
+
+Theory:
+    Cosine similarity measures the cosine of the angle between two
+    vectors in multi-dimensional space.
+
+    Formula:
+        cosine_similarity(A, B) = (A · B) / (||A|| × ||B||)
+        
+        Range: 0 (completely dissimilar) to 1 (identical)
+
+Implementation:
+    - Use scikit-learn's cosine_similarity function
+    - Compute pairwise similarities
+    - Convert to percentage (multiply by 100)
+
+Benefits:
+    - Magnitude-independent (focuses on direction)
+    - Effective for text comparison
+    - Computationally efficient
+
+4.4 RANKING ALGORITHM
+---------------------
+Process:
+    1. Compute similarity score for each resume
+    2. Sort candidates in descending order
+    3. Assign rank positions (1, 2, 3, ...)
+    4. Calculate match percentage
+    5. Extract top matching keywords per candidate
+
+
+5. USER WORKFLOW AND USE CASES
+===============================================================================
+
+5.1 PRIMARY USER WORKFLOW
+--------------------------
+Step 1: Launch Application
+    - User opens Streamlit app in web browser
+    - Landing page displays with instructions
+
+Step 2: Upload Resumes
+    - User selects multiple resume files (PDF/TXT)
+    - System validates and confirms uploads
+    - File list displayed
+
+Step 3: Enter Job Description
+    - User pastes or types job description
+    - Includes required skills, qualifications, experience
+    - Reviews input for completeness
+
+Step 4: Run Analysis
+    - User clicks "Analyze Candidates" button
+    - System processes files (progress indicator shown)
+    - ML engine computes matches
+
+Step 5: Review Results
+    - Ranked candidate list appears
+    - User reviews scores and matched qualifications
+    - Examines top candidates in detail
+
+Step 6: Export Results (Optional)
+    - User downloads results as CSV
+    - Shares with hiring team
+
+5.2 USE CASES
+-------------
+Use Case 1: High-Volume Screening
+    Actor: HR Manager
+    Scenario: Received 100+ applications for software engineer position
+    Goal: Quickly identify top 10 candidates
+    Steps: Upload all resumes, enter job description, run analysis,
+           review top 10 matches, export shortlist
+
+Use Case 2: Skills-Specific Search
+    Actor: Technical Recruiter
+    Scenario: Need Python developer with ML experience
+    Goal: Find candidates with specific technical skills
+    Steps: Upload candidate pool, create detailed job description
+           emphasizing Python/ML, analyze, filter by high scores
+
+Use Case 3: Comparative Analysis
+    Actor: Hiring Manager
+    Scenario: Compare candidates for multiple positions
+    Goal: Match candidates to best-fit roles
+    Steps: Run separate analyses for different job descriptions,
+           compare candidate rankings across roles
+
+
+6. TECHNICAL REQUIREMENTS
+===============================================================================
+
+6.1 SOFTWARE REQUIREMENTS
+-------------------------
+Programming Language:
+    - Python 3.8 or higher
+
+Core Libraries:
+    - streamlit: Web UI framework
+    - scikit-learn: ML algorithms (TF-IDF, cosine similarity)
+    - pandas: Data manipulation and export
+    - numpy: Numerical computations
+    - PyPDF2: PDF text extraction
+    - nltk: Natural language processing
+
+6.2 SYSTEM REQUIREMENTS
+-----------------------
+Minimum Hardware:
+    - CPU: Dual-core processor
+    - RAM: 4GB
+    - Storage: 500MB free space
+
+Recommended Hardware:
+    - CPU: Quad-core processor
+    - RAM: 8GB+
+    - Storage: 1GB free space
+
+6.3 ENVIRONMENT REQUIREMENTS
+----------------------------
+Operating System:
+    - Windows 10/11
+    - macOS 10.14+
+    - Linux (Ubuntu 18.04+)
+
+Browser (for Streamlit):
+    - Chrome 90+
+    - Firefox 88+
+    - Safari 14+
+    - Edge 90+
+
+6.4 PERFORMANCE REQUIREMENTS
+----------------------------
+Processing Time:
+    - 10 resumes: < 5 seconds
+    - 50 resumes: < 15 seconds
+    - 100 resumes: < 30 seconds
+
+Accuracy:
+    - Match score precision: 2 decimal places
+    - Keyword extraction: 90%+ accuracy
+
+Scalability:
+    - Support up to 100 resumes per analysis session
+    - Handle resumes up to 10 pages each
+
+6.5 CODE QUALITY REQUIREMENTS
+-----------------------------
+- Well-commented code (20%+ comment ratio)
+- Modular design with clear function separation
+- Error handling for all file operations
+- Input validation for all user inputs
+- Logging for debugging purposes
+
+
+7. OUTPUT SPECIFICATIONS
+===============================================================================
+
+7.1 CONSOLE OUTPUT
+------------------
+During processing:
+    - "Processing X resumes..."
+    - "Extracting text from [filename]..."
+    - "Computing similarity scores..."
+    - "Analysis complete!"
+
+7.2 UI OUTPUT - RESULTS DASHBOARD
+---------------------------------
+Summary Section:
+    ┌─────────────────────────────────────┐
+    │ ANALYSIS SUMMARY                    │
+    ├─────────────────────────────────────┤
+    │ Total Candidates: 25                │
+    │ Top Match Score: 87.5%              │
+    │ Average Score: 45.2%                │
+    └─────────────────────────────────────┘
+
+Candidate Rankings:
+    ┌──────────────────────────────────────────────────────────────┐
+    │ Rank 1: john_doe_resume.pdf                  Score: 87.5%    │
+    │ ████████████████████████████████████████░░░░ (87%)          │
+    │ Matched Skills: Python, Machine Learning, TensorFlow, ...   │
+    │ Key Qualifications: 5 years experience, MS in CS            │
+    └──────────────────────────────────────────────────────────────┘
+
+7.3 CSV EXPORT FORMAT
+---------------------
+Columns:
+    - Rank
+    - Candidate_Name
+    - Match_Score (%)
+    - Matched_Keywords
+    - Top_Skills
+
+Example:
+    Rank,Candidate_Name,Match_Score,Matched_Keywords,Top_Skills
+    1,john_doe.pdf,87.5,"python,ml,tensorflow","Python,ML,Data Science"
+    2,jane_smith.pdf,82.3,"java,spring,sql","Java,Backend,Database"
+
+
+8. DEVELOPMENT PHASES
+===============================================================================
+
+Phase 1: Core ML Engine (resume_screener.py)
+    - Text extraction functions
+    - Preprocessing pipeline
+    - TF-IDF implementation
+    - Similarity computation
+    - Testing with sample data
+
+Phase 2: User Interface (app.py)
+    - Basic Streamlit layout
+    - File upload integration
+    - Results display
+    - Styling and UX improvements
+
+Phase 3: Integration & Testing
+    - Connect UI to ML engine
+    - End-to-end testing
+    - Error handling
+    - Performance optimization
+
+Phase 4: Documentation & Samples
+    - Create README
+    - Generate sample resumes
+    - Write user guide
+    - Prepare presentation materials
+
+
+9. SUCCESS METRICS
+===============================================================================
+
+Functional Success:
+    ✓ Successfully processes PDF and TXT resumes
+    ✓ Accurately ranks candidates by relevance
+    ✓ Extracts and displays matching skills
+    ✓ Exports results to CSV format
+    ✓ Handles errors gracefully
+
+Technical Success:
+    ✓ Code is well-documented and maintainable
+    ✓ ML approach is explainable and transparent
+    ✓ Performance meets requirements
+    ✓ UI is intuitive and responsive
+
+Educational Success:
+    ✓ Demonstrates understanding of NLP concepts
+    ✓ Shows practical ML application
+    ✓ Code is presentation-ready
+    ✓ System can be explained in 5 minutes
+
+
+10. FUTURE ENHANCEMENTS (OUT OF SCOPE)
+===============================================================================
+
+Potential improvements for future versions:
+    - Deep learning-based matching (BERT, transformers)
+    - Multi-language support
+    - Resume parsing for structured data (education, experience)
+    - Interview scheduling integration
+    - Collaborative filtering for candidate recommendations
+    - Database storage for historical data
+    - Advanced analytics and reporting
+    - API for third-party integrations
+    - Custom ML model training on company-specific data
+
+
+===============================================================================
+END OF PRODUCT SPECIFICATION DOCUMENT
+===============================================================================

@@ -1,0 +1,106 @@
+EMILY JOHNSON
+Python Developer | DevOps Engineer
+emily.johnson@email.com | Mobile: (555) 456-7890
+GitHub: github.com/emilyjohnson
+
+PROFESSIONAL SUMMARY
+Dedicated Python Developer and DevOps Engineer with 4 years of experience in automation, 
+infrastructure management, and backend development. Skilled in Python scripting, cloud 
+platforms, and CI/CD pipelines. Strong problem solver with a passion for streamlining 
+development workflows and improving system reliability.
+
+TECHNICAL EXPERTISE
+
+Programming & Scripting
+• Python (Advanced): Django, Flask, FastAPI, asyncio, multiprocessing
+• Bash/Shell scripting for automation
+• SQL for database management
+• Basic knowledge of Java and Go
+
+DevOps & Cloud
+• AWS: EC2, S3, Lambda, CloudFormation, ECS, RDS
+• Infrastructure as Code: Terraform, Ansible
+• Containerization: Docker, Docker Compose
+• Orchestration: Kubernetes, EKS
+• CI/CD: Jenkins, GitLab CI, GitHub Actions, CircleCI
+• Monitoring: Prometheus, Grafana, CloudWatch, ELK Stack
+
+Databases & Storage
+• PostgreSQL, MySQL (Advanced)
+• MongoDB, DynamoDB (Intermediate)
+• Redis for caching
+• Data migration and backup strategies
+
+Version Control & Collaboration
+• Git, GitHub, GitLab, Bitbucket
+• Agile methodologies (Scrum, Kanban)
+• JIRA, Confluence
+
+WORK HISTORY
+
+DevOps Engineer | CloudFirst Tech | Seattle, WA
+September 2021 - Present
+• Automated infrastructure deployment using Terraform and Ansible reducing setup time by 70%
+• Built and maintained CI/CD pipelines for 20+ microservices using Jenkins and GitLab CI
+• Containerized applications using Docker and orchestrated with Kubernetes
+• Implemented monitoring and alerting systems using Prometheus and Grafana
+• Managed AWS infrastructure including EC2, S3, RDS, and Lambda
+• Reduced deployment failures by 60% through automated testing and rollback procedures
+• Created Python scripts for automated backups and system maintenance
+
+Python Backend Developer | CodeWorks LLC | San Francisco, CA
+July 2019 - August 2021
+• Developed RESTful APIs using Django REST Framework and Flask
+• Built background job processing system using Celery and Redis
+• Optimized database queries improving API response time by 50%
+• Implemented authentication systems with OAuth2 and JWT
+• Wrote comprehensive unit tests achieving 90% code coverage
+• Participated in code reviews and maintained coding standards
+• Collaborated with frontend team for API integration
+
+Junior Software Developer | StartupHub | Austin, TX
+June 2018 - June 2019
+• Created Python scripts for data processing and automation tasks
+• Developed web applications using Python Flask
+• Worked with PostgreSQL databases for data storage
+• Participated in daily standups and sprint planning
+• Fixed bugs and implemented feature requests
+• Learned DevOps practices and cloud technologies
+
+EDUCATION
+
+Bachelor of Science in Information Technology
+University of Texas at Austin | 2014 - 2018
+GPA: 3.7/4.0
+Relevant Courses: Data Structures, Operating Systems, Database Systems, Network Security
+
+CERTIFICATIONS & TRAINING
+• AWS Certified Solutions Architect - Associate (2022)
+• Certified Kubernetes Administrator (CKA) - 2021
+• Python for Everybody Specialization (Coursera) - 2020
+• Docker Mastery Course (Udemy) - 2020
+
+KEY PROJECTS
+
+Automated Deployment Pipeline
+• Built end-to-end CI/CD pipeline using Jenkins, Docker, and Kubernetes
+• Automated testing, building, and deployment of microservices
+• Reduced deployment time from hours to minutes
+
+Infrastructure Monitoring Dashboard
+• Created custom monitoring solution using Python, Prometheus, and Grafana
+• Real-time metrics collection and alerting
+• Improved incident response time by 40%
+
+Data Migration Tool
+• Developed Python tool for migrating data between different database systems
+• Handled 10M+ records with zero data loss
+• Automated validation and error handling
+
+STRENGTHS
+✓ Strong Python programming and scripting skills
+✓ Cloud infrastructure management (AWS)
+✓ Automation and process improvement
+✓ Problem-solving and debugging
+✓ Team collaboration and communication
+✓ Continuous learning mindset

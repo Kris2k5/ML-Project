@@ -1,0 +1,81 @@
+MICHAEL CHEN
+Full Stack Developer
+michael.chen@email.com | (555) 345-6789
+
+PROFILE
+Experienced Full Stack Developer with 6 years of expertise in building modern web applications. 
+Proficient in JavaScript/TypeScript, React, Node.js, and various backend technologies. 
+Strong focus on user experience, performance optimization, and scalable architecture.
+
+TECHNICAL SKILLS
+Frontend: React, Vue.js, Angular, HTML5, CSS3, JavaScript, TypeScript, Redux
+Backend: Node.js, Express, Python, Django, Java Spring Boot
+Databases: MongoDB, PostgreSQL, MySQL, Redis
+Cloud & DevOps: AWS, Docker, Kubernetes, Jenkins, GitHub Actions
+Testing: Jest, Mocha, Cypress, Selenium
+Other: GraphQL, REST APIs, WebSocket, Microservices
+
+PROFESSIONAL EXPERIENCE
+
+Senior Full Stack Developer | WebTech Solutions | San Jose, CA
+April 2020 - Present
+• Architected and developed e-commerce platform handling 50K+ daily transactions
+• Built responsive React applications with modern UI/UX design
+• Implemented Node.js microservices with Express and MongoDB
+• Led migration from monolith to microservices architecture
+• Improved application performance by 45% through optimization
+• Mentored 3 junior developers and conducted technical interviews
+
+Full Stack Developer | AppDev Inc. | Portland, OR
+January 2018 - March 2020
+• Developed customer-facing web applications using React and Node.js
+• Created RESTful APIs and GraphQL endpoints for mobile apps
+• Integrated third-party services (Stripe, SendGrid, Twilio)
+• Implemented authentication and authorization using JWT
+• Participated in code reviews and pair programming sessions
+• Collaborated with designers to implement pixel-perfect UIs
+
+Web Developer | Digital Agency | Denver, CO
+June 2016 - December 2017
+• Built client websites using HTML, CSS, JavaScript, and jQuery
+• Developed WordPress themes and plugins
+• Optimized websites for SEO and performance
+• Managed hosting on AWS and handled deployments
+• Worked directly with clients to gather requirements
+
+EDUCATION
+
+Bachelor of Science in Computer Science
+University of Washington | 2012 - 2016
+Relevant Coursework: Data Structures, Algorithms, Web Development, Databases
+
+PROJECTS
+
+Real-time Chat Application
+• Built using React, Node.js, Socket.io, and MongoDB
+• Supports 1000+ concurrent users
+• Features: private messaging, group chats, file sharing
+
+Task Management System
+• Full-stack application with React frontend and Django REST backend
+• Implemented drag-and-drop functionality and real-time updates
+• Deployed on AWS with CI/CD pipeline
+
+Personal Portfolio Website
+• Responsive portfolio built with React and Next.js
+• Showcases projects and technical blog posts
+• Optimized for performance and SEO
+
+CERTIFICATIONS
+• AWS Certified Developer - Associate (2021)
+• React - The Complete Guide (Udemy, 2020)
+• Node.js Developer Course (2019)
+
+ADDITIONAL SKILLS
+• Agile/Scrum methodologies
+• Version control with Git
+• UI/UX design principles
+• Responsive web design
+• Cross-browser compatibility
+• Performance optimization
+• Security best practices

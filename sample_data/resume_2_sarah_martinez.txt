@@ -1,0 +1,86 @@
+SARAH MARTINEZ
+Data Scientist
+sarah.martinez@email.com | (555) 234-5678
+Portfolio: sarahmartinez.github.io
+
+SUMMARY
+Passionate Data Scientist with 5 years of experience in statistical analysis, machine learning, 
+and data visualization. Expert in Python, R, and SQL with strong background in predictive 
+modeling and big data technologies. Proven ability to translate complex data insights into 
+actionable business strategies.
+
+CORE COMPETENCIES
+Languages: Python, R, SQL, Java
+ML Libraries: scikit-learn, TensorFlow, XGBoost, PyTorch, Keras
+Data Analysis: pandas, NumPy, SciPy, statsmodels
+Visualization: matplotlib, seaborn, Plotly, Tableau, Power BI
+Big Data: Apache Spark, Hadoop, Hive
+Cloud: AWS (SageMaker, Redshift), Google Cloud (BigQuery)
+Tools: Jupyter, Git, Docker, Airflow
+
+WORK EXPERIENCE
+
+Data Scientist | Analytics Corp | Boston, MA
+March 2021 - Present
+• Developed customer churn prediction models using Random Forest and XGBoost with 88% accuracy
+• Built NLP-based sentiment analysis system for social media monitoring
+• Created automated reporting dashboards using Python and Tableau
+• Conducted A/B testing and statistical analysis for product features
+• Collaborated with engineering team to deploy ML models into production
+
+Machine Learning Engineer | AI Innovations | New York, NY
+June 2019 - February 2021
+• Implemented computer vision models for image classification using CNNs
+• Designed recommendation algorithms improving click-through rate by 25%
+• Optimized ML pipelines reducing training time by 50%
+• Worked with TensorFlow and PyTorch for deep learning projects
+• Presented findings to stakeholders through data storytelling
+
+Data Analyst | Finance Solutions Inc. | Chicago, IL
+August 2017 - May 2019
+• Analyzed financial data to identify trends and patterns using Python and SQL
+• Created predictive models for risk assessment
+• Generated weekly reports and KPI dashboards for management
+• Cleaned and preprocessed large datasets (100M+ records)
+• Performed exploratory data analysis and feature engineering
+
+EDUCATION
+
+Master of Science in Data Science
+Massachusetts Institute of Technology (MIT) | 2015 - 2017
+Focus: Machine Learning and Statistical Modeling
+Thesis: "Deep Learning for Natural Language Processing"
+
+Bachelor of Science in Statistics
+University of Michigan | 2011 - 2015
+Minor: Computer Science
+
+TECHNICAL PROJECTS
+
+Customer Segmentation Platform
+• Built unsupervised learning system using K-means and hierarchical clustering
+• Identified 7 distinct customer segments for targeted marketing
+• Technologies: Python, scikit-learn, pandas, Tableau
+
+Predictive Maintenance System
+• Developed time-series forecasting model using LSTM networks
+• Predicted equipment failures 72 hours in advance with 85% accuracy
+• Stack: Python, TensorFlow, pandas, Flask
+
+Natural Language Processing Pipeline
+• Created text classification system for customer feedback analysis
+• Implemented using BERT transformers and scikit-learn
+• Processed 1M+ customer reviews
+
+CERTIFICATIONS & COURSES
+• Google Cloud Professional Data Engineer (2022)
+• Deep Learning Specialization - Coursera (2020)
+• Data Science with Python - edX (2019)
+
+SKILLS HIGHLIGHTS
+✓ Advanced statistical analysis and hypothesis testing
+✓ Feature engineering and model selection
+✓ Data cleaning and preprocessing
+✓ Model deployment and monitoring
+✓ Strong problem-solving and analytical skills
+✓ Excellent communication and presentation abilities
