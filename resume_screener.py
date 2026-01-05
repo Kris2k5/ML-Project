@@ -238,7 +238,13 @@ class ResumeScreener:
         IDF measures how important a term is across all documents.
         Terms appearing in many documents get lower IDF scores.
         
-        Formula: IDF(term) = log(total documents / documents containing term)
+        Formula: IDF(term) = log((1 + N) / (1 + df))
+        where N = total documents, df = documents containing term
+        
+        Note: The +1 smoothing (similar to Laplace smoothing) prevents:
+        - Division by zero
+        - Log of zero
+        - Over-penalization of terms appearing in all documents
         
         Args:
             documents (List[str]): List of preprocessed text documents
@@ -256,10 +262,13 @@ class ResumeScreener:
                 term_doc_count[term] = term_doc_count.get(term, 0) + 1
         
         # Calculate IDF for each term
-        # Adding 1 to denominator prevents division by zero
+        # Using standard IDF formula with smoothing to prevent log(0)
+        # IDF = log((1 + N) / (1 + df)) where N is total docs, df is document frequency
+        # The +1 smoothing is similar to Laplace smoothing
         idf_dict = {}
         for term, doc_count in term_doc_count.items():
-            idf_dict[term] = math.log(total_docs / (1 + doc_count))
+            # Smooth IDF formula: prevents issues with rare/common terms
+            idf_dict[term] = math.log((1 + total_docs) / (1 + doc_count))
         
         return idf_dict
     
